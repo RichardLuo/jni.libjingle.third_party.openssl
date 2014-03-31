@@ -68,10 +68,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#define NON_MAIN
-#include "apps.h"
-#undef NON_MAIN
-// #include "apps.h" /* needs to be included before the openssl headers! */
+#include "apps.h" /* needs to be included before the openssl headers! */
 #include <openssl/e_os2.h>
 #include <openssl/crypto.h>
 #include <openssl/err.h>
@@ -125,7 +122,7 @@ static OCSP_RESPONSE *query_responder(BIO *err, BIO *cbio, char *path,
 
 int MAIN(int, char **);
 
-int OLD_MAIN(int argc, char **argv)
+int MAIN(int argc, char **argv)
 	{
 	ENGINE *e = NULL;
 	char **args;
@@ -620,7 +617,7 @@ int OLD_MAIN(int argc, char **argv)
 		BIO_printf (bio_err, "-ndays n	 	 number of days before next update\n");
 		BIO_printf (bio_err, "-resp_key_id       identify reponse by signing certificate key ID\n");
 		BIO_printf (bio_err, "-nrequest n        number of requests to accept (default unlimited)\n");
-		BIO_printf (bio_err, "-<dgst alg>     use specified digest in the request\n");
+		BIO_printf (bio_err, "-<dgst alg>     use specified digest in the request");
 		goto end;
 		}
 
@@ -1128,7 +1125,7 @@ static int make_ocsp_response(OCSP_RESPONSE **resp, OCSP_REQUEST *req, CA_DB *db
 			ASN1_GENERALIZEDTIME *invtm = NULL;
 			OCSP_SINGLERESP *single;
 			int reason = -1;
-            unpack_revinfo(&revtm, &reason, &inst, &invtm, inf[DB_rev_date]);
+			unpack_revinfo(&revtm, &reason, &inst, &invtm, inf[DB_rev_date]);
 			single = OCSP_basic_add1_status(bs, cid,
 						V_OCSP_CERTSTATUS_REVOKED,
 						reason, revtm,
