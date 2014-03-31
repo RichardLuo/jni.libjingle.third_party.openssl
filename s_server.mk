@@ -67,6 +67,7 @@ LOCAL_SRC_FILES := \
 	openssl/apps/s_socket.c \
 	openssl/apps/app_rand.c \
 	openssl/apps/ocsp.c \
+	openssl/apps/ca.c \
 	openssl/apps/s_server.c \
 
 

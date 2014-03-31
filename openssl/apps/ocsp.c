@@ -68,7 +68,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include "apps.h" /* needs to be included before the openssl headers! */
+// #include "apps.h" /* needs to be included before the openssl headers! */
+#define NON_MAIN
+#include "apps.h"
+#undef NON_MAIN
 #include <openssl/e_os2.h>
 #include <openssl/crypto.h>
 #include <openssl/err.h>
@@ -122,7 +125,7 @@ static OCSP_RESPONSE *query_responder(BIO *err, BIO *cbio, char *path,
 
 int MAIN(int, char **);
 
-int MAIN(int argc, char **argv)
+int old_MAIN(int argc, char **argv)
 	{
 	ENGINE *e = NULL;
 	char **args;

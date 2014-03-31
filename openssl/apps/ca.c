@@ -87,7 +87,11 @@
 #  endif
 #endif
 
+// #include "apps.h"
+
+#define NON_MAIN
 #include "apps.h"
+#undef NON_MAIN
 
 #ifndef W_OK
 #  define F_OK 0
@@ -239,7 +243,7 @@ static int msie_hack=0;
 
 int MAIN(int, char **);
 
-int MAIN(int argc, char **argv)
+int oold_MAIN(int argc, char **argv)
 	{
 	ENGINE *e = NULL;
 	char *key=NULL,*passargin=NULL;
