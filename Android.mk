@@ -677,4 +677,4 @@ LOCAL_PRELINK_MODULE := false
 LOCAL_MODULE_TAGS := eng
 
 include $(BUILD_SHARED_LIBRARY)
-include $(LOCAL_PATH)/s_server.mk
+# include $(LOCAL_PATH)/s_server.mk
